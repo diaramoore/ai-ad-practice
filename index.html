@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Advertising Studio | Practice Website</title>
+<meta name="description" content="A demonstration website for learning AI advertising and Meta Pixel tracking.">
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#f7f8fc;background:#0c1020}*{box-sizing:border-box}body{margin:0}main{max-width:960px;margin:auto;padding:28px 24px 80px}header{display:flex;justify-content:space-between;align-items:center;padding:10px 0 70px}header span{font-weight:800;letter-spacing:.03em}nav a{color:#c8d0eb;text-decoration:none;margin-left:20px}.eyebrow{color:#a6b8ff;text-transform:uppercase;font-size:13px;letter-spacing:.16em;font-weight:800}h1{font-size:clamp(42px,7vw,76px);line-height:1.07;letter-spacing:-.045em;margin:15px 0 20px;max-width:790px}p{color:#c4cbe0;line-height:1.7;font-size:18px;max-width:650px}.btn{background:#8b9dff;color:#0c1020;border:0;border-radius:12px;padding:15px 22px;font-weight:800;cursor:pointer;font-size:16px;text-decoration:none;display:inline-block;margin-top:14px}.outline{background:transparent;border:1px solid #8b9dff;color:#d7deff}.actions{display:flex;gap:12px;flex-wrap:wrap}section{margin-top:92px}h2{font-size:30px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{border:1px solid #303a5d;background:#171e35;border-radius:18px;padding:24px}.card p{font-size:15px}.small{font-size:13px;color:#a8b3d2}footer{margin-top:80px;border-top:1px solid #303a5d;padding-top:20px;color:#a8b3d2}
+</style>
+<!-- META PIXEL: After creating your Pixel in Events Manager, paste the complete base code here, immediately above </head>. Do not paste only the numeric Pixel ID. -->
+</head>
+<body>
+<main>
+<header><span>AI AD STUDIO <span style="color:#8b9dff">/ LAB</span></span><nav><a href="#services">Services</a><a href="#contact">Contact</a></nav></header>
+<div class="eyebrow">AI-Powered Digital Marketing · Demo</div>
+<h1>Creative ads. Smarter campaigns. Better possibilities.</h1>
+<p>We explore AI-generated advertising and thoughtful paid campaign management to help businesses connect with their audiences.</p>
+<div class="actions"><a class="btn" href="#services">Explore Services</a><a class="btn outline" href="#contact">Get in Touch</a></div>
+<section id="services"><div class="eyebrow">What we do</div><h2>Two services. One connected strategy.</h2><div class="cards"><div class="card"><h3>✦ AI Ad Creation</h3><p>Promotional videos, animated ads, and scroll-stopping creative concepts.</p></div><div class="card"><h3>↗ Paid Campaign Management</h3><p>Campaign setup, audience testing, optimization, and performance reporting.</p></div></div></section>
+<section id="contact"><div class="eyebrow">Tracking practice</div><h2>Test a lead-interest event</h2><p>This demonstration button does not submit personal information. After you install your Pixel, clicking it can send a <code>Lead</code> test event to Meta.</p><button class="btn" id="demo-lead" type="button">I'm Interested (Demo)</button><p class="small" id="message" role="status" aria-live="polite"></p></section>
+<footer><small>Demonstration website for Meta Pixel learning. No contact details collected. Do not use real visitor tracking without appropriate privacy disclosures and consent where required.</small></footer>
+</main>
+<script>
+document.getElementById('demo-lead').addEventListener('click',function(){
+  if(typeof window.fbq==='function') { window.fbq('track','Lead'); document.getElementById('message').textContent='Demo Lead event requested. Check Meta Events Manager → Test Events to verify receipt.'; }
+  else { document.getElementById('message').textContent='Pixel not installed yet. Add your Meta Pixel base code to the <head> section first.'; }
+});
+</script>
+</body>
+</html>

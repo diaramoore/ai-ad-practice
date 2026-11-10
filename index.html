@@ -34,13 +34,59 @@ src="https://www.facebook.com/tr?id=1501686848475469&ev=PageView&noscript=1"
 <p>We explore AI-generated advertising and thoughtful paid campaign management to help businesses connect with their audiences.</p>
 <div class="actions"><a class="btn" href="#services">Explore Services</a><a class="btn outline" href="#contact">Get in Touch</a></div>
 <section id="services"><div class="eyebrow">What we do</div><h2>Two services. One connected strategy.</h2><div class="cards"><div class="card"><h3>✦ AI Ad Creation</h3><p>Promotional videos, animated ads, and scroll-stopping creative concepts.</p></div><div class="card"><h3>↗ Paid Campaign Management</h3><p>Campaign setup, audience testing, optimization, and performance reporting.</p></div></div></section>
-<section id="contact"><div class="eyebrow">Tracking practice</div><h2>Test a lead-interest event</h2><p>This demonstration button does not submit personal information. After you install your Pixel, clicking it can send a <code>Lead</code> test event to Meta.</p><button class="btn" id="demo-lead" type="button">I'm Interested (Demo)</button><p class="small" id="message" role="status" aria-live="polite"></p></section>
-<footer><small>Demonstration website for Meta Pixel learning. No contact details collected. Do not use real visitor tracking without appropriate privacy disclosures and consent where required.</small></footer>
+
+<section id="contact">
+  <div class="eyebrow">Conversion Tracking Practice</div>
+  <h2>Submit a Practice Inquiry</h2>
+  <p>
+    This is a simulation for learning Meta Pixel tracking.
+    Use fictional information only. Nothing is sent or stored.
+  </p>
+
+  <form id="practice-form">
+    <label for="name">Name</label>
+    <input id="name" type="text" required
+      placeholder="Test Customer"
+      style="display:block;padding:14px;margin:10px 0 20px;
+      width:100%;max-width:450px;">
+
+    <label for="email">Email</label>
+    <input id="email" type="email" required
+      placeholder="test@example.com"
+      style="display:block;padding:14px;margin:10px 0 20px;
+      width:100%;max-width:450px;">
+
+    <button class="btn" type="submit">
+      Submit Practice Inquiry
+    </button>
+  </form>
+
+  <p class="small" id="message"
+     role="status" aria-live="polite"></p>
+</section>
+footer><small>Demonstration website for Meta Pixel learning. No contact details collected. Do not use real visitor tracking without appropriate privacy disclosures and consent where required.</small></footer>
 </main>
 <script>
-document.getElementById('demo-lead').addEventListener('click',function(){
-  if(typeof window.fbq==='function') { window.fbq('track','Lead'); document.getElementById('message').textContent='Demo Lead event requested. Check Meta Events Manager → Test Events to verify receipt.'; }
-  else { document.getElementById('message').textContent='Pixel not installed yet. Add your Meta Pixel base code to the <head> section first.'; }
+
+const form = document.getElementById('practice-form');
+const message = document.getElementById('message');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  if (!form.reportValidity()) return;
+
+  if (typeof window.fbq === 'function') {
+    window.fbq('track', 'Lead');
+    message.textContent =
+      'Practice submission complete! Lead event requested. ' +
+      'Check Meta Events Manager under Test Events.';
+  } else {
+    message.textContent =
+      'Meta Pixel was not detected. Check your installation.';
+  }
+
+  form.reset();
 });
 </script>
 </body>
